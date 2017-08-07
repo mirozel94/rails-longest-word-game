@@ -1,0 +1,21 @@
+<% start_time = Time.now %>
+
+<div style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('../../images/logo.jpg')">
+  <div class="text-center">
+    <h1>Welcome to the longest word-game!</h1>
+    <h3>Here is your grid:</h3>
+    <p><%= @grid.join(" ") %></p>
+
+    <form action="/score">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <label for="question">What's your best shot?</label>
+          <input class="form-control" type="text" id="question" name="query" placeholder="Type your word here">
+          <input type="hidden" name="time" value="<%=start_time%>">
+          <input type="hidden" name="grid" value="<%=@grid%>">
+          <input class="btn btn-primary" type="submit" value="Go on!">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
