@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   def game
     @grid = generate_grid
     @attempt = params[:query]
+    session[:grid] = @grid
+    # @current_user = User.find_by_id(session[:current_user_id])
   end
 
   def score
@@ -17,7 +19,11 @@ class PagesController < ApplicationController
   end
 
   def generate_grid
-    Array.new(9) { ('A'..'Z').to_a.sample }
+    vows =  %w{ A E I O U }
+    a = Array.new(5) { (('A'..'Z').to_a - vows).sample }
+    b = Array.new(4) { vows.sample }
+    c = a << b
+    c.shuffle
   end
 
   def included?(guess, grid)

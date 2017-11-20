@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'pages/game'
-
-  get 'pages/score'
 
   get 'game', to: 'pages#game'
   get 'score', to: 'pages#score'
